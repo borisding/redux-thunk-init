@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    ["@babel/preset-stage-2", { "decoratorsLegacy": true }]
+  ],
+  "env": {
+    "es": {
+      "presets": [
+        ["@babel/preset-env", { "modules": false }],
+        ["@babel/preset-stage-2", { "decoratorsLegacy": true }]
+      ]
+    }
+  }
+}
