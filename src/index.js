@@ -32,14 +32,14 @@ export default function init(thunk, extra = null) {
     });
 
     const _thunk = thunk(dispatch, getState, extraArgument);
-    const rejectHandler = error => {
-      throw error;
+    const onRejected = reason => {
+      throw reason;
     };
 
     if (isPromise(_thunk)) {
-      return _thunk.then(result => result, rejectHandler);
+      return _thunk.then(value => value, onRejected);
     }
 
-    return _promise.then(() => _thunk, rejectHandler);
+    return _promise.then(() => _thunk, onRejected);
   };
 }
