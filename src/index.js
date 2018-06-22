@@ -10,7 +10,6 @@ export default function init(thunk, extra = null) {
         reject(
           dispatch({
             type: INIT_REJECTED,
-            meta: extra,
             payload: {
               rejected: true,
               message: 'Invalid thunk function!'
@@ -31,10 +30,12 @@ export default function init(thunk, extra = null) {
       }
     });
 
-    const _thunk = thunk(dispatch, getState, extraArgument);
     const onRejected = reason => {
       throw reason;
     };
+
+    const _thunk =
+      isFunction(thunk) && thunk(dispatch, getState, extraArgument);
 
     if (isPromise(_thunk)) {
       return _thunk.then(value => value, onRejected);
