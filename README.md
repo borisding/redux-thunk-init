@@ -33,8 +33,8 @@ function myActionCreator() {
 	type: "INIT_FULFILLED",
 	meta: extra, // the second argument passed to `init`
 	payload: {
-		fulfilled: true,
-		message: 'Init action dispatched!'
+      fulfilled: true,
+      message: 'Init action dispatched!'
 	}
 }
 ```
