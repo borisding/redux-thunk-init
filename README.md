@@ -5,9 +5,15 @@
 - An opt-in addon for `redux-thunk` middleware to perform asynchronous dispatch.
 - You may only need this if you need to handle something before the subsequent action is dispatched. (imagine the dispatch "start" action in action creators)
 
+
 ## Usage
 
-- Assumed you have already [installed](https://github.com/reduxjs/redux-thunk#installation) and enabled redux-thunk middleware.
+- Assumed you have already [installed](https://github.com/reduxjs/redux-thunk#installation) and enabled redux-thunk middleware. Then, install package:
+
+```
+npm i redux-thunk-init
+```
+
 - Instead of returning thunk function directly in action creator, we wrap it with `init` function as first argument, instead.
 - `extra` can be provided, by passing it as second argument which to be assigned to `meta` in `INIT_FULFILLED` action. (default: `null`)
 

@@ -6,6 +6,7 @@
   "module": "dist/es/index.js",
   "scripts": {
     "clean": "rimraf dist",
+    "prepare": "npm run build",
     "build": "npm-run-all clean build:cjs build:es build:umd build:umd:min",
     "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir dist",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir dist/es",
