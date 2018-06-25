@@ -1,6 +1,7 @@
 ## redux-thunk-init
-
+[![npm version](https://img.shields.io/npm/v/redux-thunk-init.svg?style=flat-square)](https://www.npmjs.com/package/redux-thunk-init)
 [![build status](https://img.shields.io/travis/borisding/redux-thunk-init/master.svg?style=flat-square)](https://travis-ci.org/borisding/redux-thunk-init)
+[![npm downloads](https://img.shields.io/npm/dm/redux-thunk-init.svg?style=flat-square)](https://www.npmjs.com/package/redux-thunk-init)
 
 - An opt-in addon for `redux-thunk` middleware to perform asynchronous dispatch.
 - You may only need this if you need to handle something before the subsequent action is dispatched. (imagine the dispatch "start" action in action creators)
@@ -14,7 +15,7 @@
 npm i redux-thunk-init
 ```
 
-- Instead of returning thunk function directly in action creator, we wrap it with `init` function as first argument, instead.
+- Instead of returning thunk function directly in action creator, we wrap it with `init` function as first argument.
 - `extra` can be provided, by passing it as second argument which to be assigned to `meta` in `INIT_FULFILLED` action. (default: `null`)
 
 ```js
