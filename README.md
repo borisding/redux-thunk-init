@@ -30,12 +30,12 @@ function myActionCreator() {
 
 ```js
 {
-	type: "INIT_FULFILLED",
-	meta: extra, // the second argument passed to `init`
-	payload: {
-      fulfilled: true,
-      message: 'Init action dispatched!'
-	}
+  type: "INIT_FULFILLED",
+  meta: extra, // the second argument passed to `init`
+  payload: {
+    fulfilled: true,
+    message: 'Init action dispatched!'
+  }
 }
 ```
 
