@@ -3,7 +3,7 @@ import { isFunction, isPromise } from './utils';
 const INIT_REJECTED = 'INIT_REJECTED';
 const INIT_FULFILLED = 'INIT_FULFILLED';
 
-export default function init(thunk, extra = null) {
+export default function init(thunk, extra = {}) {
   return (dispatch, getState, extraArgument) => {
     const _promise = new Promise((resolve, reject) => {
       if (!isFunction(thunk)) {

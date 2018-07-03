@@ -35,7 +35,7 @@ describe('dispatch `INIT_FULFILLED` action from action creator:', () => {
   test('`INIT_FULFILLED` action has `meta` property', () => {
     store.dispatch(todoActionCreator());
     const actions = store.getActions();
-    expect(actions[0]).toHaveProperty('meta');
+    expect(actions[0]).toHaveProperty('meta', {});
   });
 
   test('`INIT_FULFILLED` action has `payload` property', () => {

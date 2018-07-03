@@ -16,7 +16,7 @@ npm i redux-thunk-init
 ```
 
 - Instead of returning thunk function directly in action creator, we wrap it with `init` function as first argument.
-- `extra` can be provided, by passing it as second argument which to be assigned to `meta` in `INIT_FULFILLED` action. (default: `null`)
+- `extra` can be provided, by passing it as second argument which to be assigned to `meta` in `INIT_FULFILLED` action. (default: `{}`)
 
 ```js
 import init from redux-thunk-init;
