@@ -56,7 +56,33 @@ function myActionCreator() {
 
 - When a promise is returned, the original promise will remain untouched and be used (eg: the fetch's promise). Otherwise, the promise that resolved initial action will be returned.
 
-- This addon is not catching thrown error on behalf. It is developer's responsibility to handle rejected promise in application.
+- By default, this addon is throwing back the reason when promise is rejected. However, it's possible for us to handle thrown error for all actions wrapped by `init`, globally:
+
+For instance, we have one error action creator, `errorActionCreator` defined as follows:
+
+```js
+// `error` received from rejected promise,
+// you shape whatever error action based on needs
+const errorActionCreator = error => ({
+  type: "ERROR_ACTION",
+  payload: error
+});
+```
+
+and then, we pass it as one of the extra arguments via `redux-thunk` middleware:
+
+```js
+const store = createStore(
+  reducer,
+  applyMiddleware(
+    thunk.withExtraArgument({
+      errorActionCreator // we register `errorActionCreator` here
+    })
+  )
+);
+```
+
+When promise get rejected, `errorActionCreator` will be dispatched from this addon instead of throwing error back.
 
 ## License
 

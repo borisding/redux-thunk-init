@@ -1,10 +1,10 @@
 import { isFunction, isPromise } from './utils';
 
-const INIT_REJECTED = 'INIT_REJECTED';
-const INIT_FULFILLED = 'INIT_FULFILLED';
+export const INIT_REJECTED = 'INIT_REJECTED';
+export const INIT_FULFILLED = 'INIT_FULFILLED';
 
 export default function init(thunk, extra = {}) {
-  return (dispatch, getState, extraArgument) => {
+  return (dispatch, getState, extraArgument = {}) => {
     const _promise = new Promise((resolve, reject) => {
       if (!isFunction(thunk)) {
         reject(
@@ -31,7 +31,19 @@ export default function init(thunk, extra = {}) {
     });
 
     const onRejected = reason => {
-      throw reason;
+      const { errorActionCreator } = extraArgument;
+
+      if (!errorActionCreator) {
+        throw reason;
+      }
+
+      if (typeof errorActionCreator !== 'function') {
+        throw new TypeError('`errorActionCreator` must be a function.');
+      }
+
+      // dispatch error action creator that is passed
+      // via `redux-thunk` extraArgument, which accepts given error
+      return dispatch(errorActionCreator(reason));
     };
 
     const _thunk =
