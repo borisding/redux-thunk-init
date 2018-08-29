@@ -37,7 +37,7 @@ export default function init(thunk, extra = {}) {
         throw reason;
       }
 
-      if (typeof errorActionCreator !== 'function') {
+      if (!isFunction(errorActionCreator)) {
         throw new TypeError('`errorActionCreator` must be a function.');
       }
 
@@ -46,8 +46,7 @@ export default function init(thunk, extra = {}) {
       return dispatch(errorActionCreator(reason));
     };
 
-    const _thunk =
-      isFunction(thunk) && thunk(dispatch, getState, extraArgument);
+    const _thunk = thunk && thunk(dispatch, getState, extraArgument);
 
     if (isPromise(_thunk)) {
       return _thunk.then(value => value, onRejected);
