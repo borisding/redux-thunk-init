@@ -1,6 +1,6 @@
 {
   "name": "redux-thunk-init",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "Addon for redux-thunk middleware to perform asynchronous dispatch in action creators.",
   "main": "dist/index.js",
   "module": "dist/es/index.js",
